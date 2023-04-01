@@ -46,16 +46,25 @@ print(url)
 response = urlopen(url)
 
 data_json = json.loads(response.read())
+
+# Dumps everything into a .gitignore file data.json for better viewing.
+with open("data.json", 'w') as outfile:
+    json.dump(data_json, outfile)
   
-#print(data_json)
+
+print(data_json)
 # print the json response
 
+with open("Data.txt", 'w') as file:
+    for article in all_articles['articles']:
+        title = article['title']
+        content = article['content']
+        description = article['description']
+        file.write("-----------------------------------------------------\n")
+        file.writelines([title + '\n', description + '\n', content + '\n'])
 
-for article in all_articles['articles']:
-    content = article['content']
-    description = article['description']
 
-print(description)
+# print(description)
 
 #print(reference)
 
